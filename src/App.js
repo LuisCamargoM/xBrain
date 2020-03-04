@@ -1,9 +1,20 @@
 import React from 'react';
+import ListaProduto from './View/Produto';
 
 function App() {
   return (
     <div className="App">    
-      <h1> Funfou! </h1>  
+      <ListaProduto/>
+      {/* 
+        if(getCheckout){
+          <Checkout/>
+        }else{
+          <ListaProduto />
+          <Cliente/>
+        }
+      */}
+
+
     </div>
   );
 }
