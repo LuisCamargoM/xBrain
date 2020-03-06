@@ -11,43 +11,71 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     width: 230,
+    minHeight: 'auto',
     margin: '20px 20px 20px 20px',     
-    display: 'left'
+    color: 'grey'
   },
   media: {
-    height: 10,    
+    height: 150,
+    width:  160,    
+    margin: '0 auto 0 auto', 
   },
+  title: {
+    fontSize: '12px',      
+  },
+  price: {
+    marginTop: '5px',
+    fontWeight: 'bold',
+    fontSize: '18px',
+  },
+  description: {
+    fontSize: '10px',
+    color: 'darkgrey',
+    fontWeight: '200px',
+  }
 });
 
-export default function MediaCard() {
+const MediaCard = (info) => {
   const classes = useStyles();
+  const {product} = info;
 
+  let bol = false;
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} >
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={require('../../../'+product.img_path)}          
         />
+      </CardActionArea>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+          <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
+            { product.name || 'Nome_Produto'}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="h1" className={classes.price}>
+            <span> {'R$ '+product.price+',00' || 'Produto_Preço'}</span>
+            <br/>
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            <span className={classes.description}>
+              { product.paymentDescription[0] || 'Pagamento_Descriçao1'}
+            <br/>
+              { product.paymentDescription[1] || 'Pagamento_Descriçao2'}
+            </span>            
+            <span className={classes.description}></span>
           </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
+        </CardContent>      
+      {bol && (
+      <CardActions >
         <Button size="small" color="primary">
-          Share
+          -
         </Button>
-        <Button size="small" color="primary">
-          Learn More
+        <Button size="large" color="primary">
+          +
         </Button>
-      </CardActions>
+      </CardActions>)}      
     </Card>
   );
 }
+
+export default MediaCard;
