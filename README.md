@@ -1,7 +1,7 @@
 
 ### `Steps to run this project`
 
-##### Terminal
+### Terminal
 ###### git clone 
 ###### npm install
 ###### npm start
