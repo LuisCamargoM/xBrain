@@ -19,9 +19,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+onclick = ()=> {
+  return localStorage.getItem('cart');
+}
 export default function Lista() {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>      
       <Title title='Produtos'/>

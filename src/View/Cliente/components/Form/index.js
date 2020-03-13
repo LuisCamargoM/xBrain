@@ -13,7 +13,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',        
     marginBottom: '60px',
-    justifyContent: 'left'
+    justifyContent: 'left',
+    minWidth: '275',
   },
   marginName: {
     margin: theme.spacing(2),
@@ -61,7 +62,7 @@ const useStyles = makeStyles(theme => ({
   total:{
     marginBottom: '10px',
     fontWeight: 'bold',
-    color: 'grey',
+    color: 'grey',  
     fontSize: '1.2rem'
   }
 }));
@@ -88,8 +89,7 @@ const onChangeHandle = (event) => {
 }
 const Form = (props) => {
   const classes = useStyles();  
-  
-
+  const {total} = props;
   return (
     <div>
     <form className={classes.root} noValidate>      
@@ -122,7 +122,7 @@ const Form = (props) => {
       />     
     </form>
       <div className={classes.submit}>
-        <span className={classes.total}>Total: R$ 299,00</span>
+        <span id='total' className={classes.total}>Total: { total || 'Valor_Total'}</span>
         <Button className={classes.button}>
           Finalizar Compra
         </Button>
@@ -130,5 +130,4 @@ const Form = (props) => {
     </div>
   );
 }
-
 export default Form;
